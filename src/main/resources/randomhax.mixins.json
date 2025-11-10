@@ -3,7 +3,9 @@
   "package": "com.randomhax.addon.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "ExampleMixin"
+    "ModuleAccessor",
+    "EntityVelocityUpdateS2CPacketAccessor",
+    "VelocityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -18,6 +18,7 @@ public class RandomHax extends MeteorAddon {
         LOG.info("Initializing RandomHax");
         Modules.get().add(new RocketMan());
         Modules.get().add(new com.randomhax.addon.modules.AutoBedTrap());
+        Modules.get().add(new com.randomhax.addon.modules.searcharea.SearchArea());
     }
 
     @Override
