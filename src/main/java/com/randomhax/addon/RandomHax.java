@@ -8,6 +8,9 @@ import org.slf4j.Logger;
 
 // Modules
 import com.randomhax.addon.modules.RocketMan;
+import com.randomhax.addon.modules.AutoBedTrap;
+import com.randomhax.addon.modules.searcharea.SearchArea;
+import com.randomhax.addon.modules.AdBlocker;
 
 public class RandomHax extends MeteorAddon {
     public static final Logger LOG = LogUtils.getLogger();
@@ -17,8 +20,9 @@ public class RandomHax extends MeteorAddon {
     public void onInitialize() {
         LOG.info("Initializing RandomHax");
         Modules.get().add(new RocketMan());
-        Modules.get().add(new com.randomhax.addon.modules.AutoBedTrap());
-        Modules.get().add(new com.randomhax.addon.modules.searcharea.SearchArea());
+        Modules.get().add(new AutoBedTrap());
+        Modules.get().add(new SearchArea());
+        Modules.get().add(new AdBlocker());
     }
 
     @Override
