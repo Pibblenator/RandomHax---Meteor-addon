@@ -4,8 +4,10 @@
 
 
 
-- RocketMan - 0xTas (Simplified by me)
+- RocketMan - 0xTas (Made more simple by me)
 - AutoBedTrap - Me (Pretty fucking shit ngl)
 - Search Area - Jefff
+- AdBlocker - Me (Inspo from bephax)
+- Auto67 - Me (Auto whispers players 67 that are in range)
 - Velocity - Me
   
