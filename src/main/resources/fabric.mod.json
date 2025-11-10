@@ -6,7 +6,7 @@
   "description": "A Meteor Client addon with random (but powerful) hacks.",
   "authors": ["ZyZaBruh"],
   "contact": {
-    "sources": "https://github.com/yourname/randomhax"
+    "sources": "https://github.com/Pibblenator/RandomHax---Meteor-addon"
   },
   "icon": "assets/randomhax/icon.png",
   "environment": "client",
@@ -23,7 +23,7 @@
   },
   "depends": {
     "java": ">=21",
-    "minecraft": ["${mc_version}", "1.21.7", "1.21.6"],
+    "minecraft": ["${mc_version}", "1.21.8", "1.21.7", "1.21.6"],
     "meteor-client": "*"
   }
 }
