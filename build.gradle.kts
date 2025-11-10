@@ -22,17 +22,23 @@ base {
 
 repositories {
     mavenCentral()
-    maven("https://maven.meteordev.org/releases") { name = "meteor-maven" }
-    maven("https://maven.meteordev.org/snapshots") { name = "meteor-maven-snapshots" }
+    maven("https://maven.meteordev.org/releases")
+    maven("https://maven.meteordev.org/snapshots")
+    // (Optional) Modrinth repos if you add Xaero stuff later:
+    // maven("https://api.modrinth.com/maven") { name = "Modrinth" }
 }
 
 dependencies {
+    // Fabric
     minecraft("com.mojang:minecraft:$mcVersion")
     mappings("net.fabricmc:yarn:$yarnMappings:v2")
     modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
 
-    // Meteor snapshot for this MC version
+    // Meteor (snapshot matches your MC version)
     modImplementation("meteordevelopment:meteor-client:$mcVersion-SNAPSHOT")
+
+    // Baritone (compile-only; you still need the mod jar at runtime)
+    modCompileOnly("meteordevelopment:baritone:$mcVersion-SNAPSHOT")
 }
 
 tasks {
