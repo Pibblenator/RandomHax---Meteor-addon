@@ -3,11 +3,14 @@
 
 
 
-
 - RocketMan - 0xTas (Made more simple by me)
 - AutoBedTrap - Me (Pretty fucking shit ngl)
 - Search Area - Jefff
 - AdBlocker - Me (Inspo from bephax)
 - Auto67 - Me (Auto whispers players 67 that are in range)
 - Velocity - Me
+- TrailFollower - PathSeeker (Modded by me)
+- Pitch40Util - Jefff
+- AFKVanillaFly - Jefff
   
+
