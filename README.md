@@ -10,4 +10,7 @@
 - AdBlocker - Me (Inspo from bephax)
 - Auto67 - Me (Auto whispers players 67 that are in range)
 - Velocity - Me
+- TrailFollower - PathSeeker (Modded by me)
+- Pitch40Util - Jefff
+- AFKVanillaFly - Jefff
   
