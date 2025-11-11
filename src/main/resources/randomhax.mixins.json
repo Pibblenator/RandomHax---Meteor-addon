@@ -7,7 +7,8 @@
     "ModuleAccessor",
     "EntityVelocityUpdateS2CPacketAccessor",
     "VelocityMixin",
-    "EntityMixin"
+    "EntityMixin",
+    "meteor.TimerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
