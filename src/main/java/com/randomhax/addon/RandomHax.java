@@ -14,6 +14,8 @@ import com.randomhax.addon.modules.AdBlocker;
 import com.randomhax.addon.modules.Pitch40Util;
 import com.randomhax.addon.modules.TrailFollower;
 import com.randomhax.addon.modules.AFKVanillaFly;
+import com.randomhax.addon.modules.AutoPortal;
+import com.randomhax.addon.modules.PathMacro;
 
 public class RandomHax extends MeteorAddon {
     public static final Logger LOG = LogUtils.getLogger();
@@ -29,6 +31,8 @@ public class RandomHax extends MeteorAddon {
         Modules.get().add(new Pitch40Util());
         Modules.get().add(new TrailFollower());
         Modules.get().add(new AFKVanillaFly());
+        Modules.get().add(new AutoPortal());
+        Modules.get().add(new PathMacro());
     }
 
     @Override
