@@ -12,5 +12,8 @@
 - TrailFollower - PathSeeker (Modded by me)
 - Pitch40Util - Jefff
 - AFKVanillaFly - Jefff
+- PathMacro - Me
+- AutoPortal - BepHax
+- Timer Auto Adjust - Me (Inspired by Bephax)
   
 
