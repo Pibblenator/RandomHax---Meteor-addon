@@ -16,6 +16,11 @@ import com.randomhax.addon.modules.TrailFollower;
 import com.randomhax.addon.modules.AFKVanillaFly;
 import com.randomhax.addon.modules.AutoPortal;
 import com.randomhax.addon.modules.PathMacro;
+import com.randomhax.addon.modules.MapSaver;
+import com.randomhax.addon.modules.YesCom;
+
+// Fabric client command bootstrap
+import com.randomhax.addon.commands.YesComCommands;
 
 public class RandomHax extends MeteorAddon {
     public static final Logger LOG = LogUtils.getLogger();
@@ -24,6 +29,8 @@ public class RandomHax extends MeteorAddon {
     @Override
     public void onInitialize() {
         LOG.info("Initializing RandomHax");
+
+        // Modules
         Modules.get().add(new RocketMan());
         Modules.get().add(new AutoBedTrap());
         Modules.get().add(new SearchArea());
@@ -33,6 +40,11 @@ public class RandomHax extends MeteorAddon {
         Modules.get().add(new AFKVanillaFly());
         Modules.get().add(new AutoPortal());
         Modules.get().add(new PathMacro());
+        Modules.get().add(new MapSaver());
+        Modules.get().add(new YesCom());
+
+        // Register client-side commands via Fabric (not Meteor Commands API)
+        YesComCommands.register();
     }
 
     @Override

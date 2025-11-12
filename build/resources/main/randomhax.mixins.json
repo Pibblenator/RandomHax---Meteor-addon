@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.randomhax.addon.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ModuleAccessor",
+    "EntityVelocityUpdateS2CPacketAccessor",
+    "VelocityMixin",
+    "EntityMixin",
+    "meteor.TimerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

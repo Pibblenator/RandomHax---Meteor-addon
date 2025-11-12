@@ -1,19 +1,25 @@
+import org.gradle.api.tasks.bundling.AbstractArchiveTask
+
 plugins {
-    id("fabric-loom") version "1.13.+"
+    id("fabric-loom") version "1.13.4"
 }
 
-@Suppress("UNCHECKED_CAST")
-val mcVersion      = (project.property("minecraft_version") as String)
-val yarnMappings   = (project.property("yarn_mappings") as String)
-val loaderVersion  = (project.property("loader_version") as String)
-val modVersion     = (project.property("mod_version") as String)
-val mavenGroup     = (project.property("maven_group") as String)
-val archivesBase   = (project.property("archives_base_name") as String)
-val meteorMc       = (project.property("meteor_mc_version") as String)
+fun prop(name: String, def: String) = providers.gradleProperty(name).orElse(def).get()
 
-val xaeroMinimap   = (project.findProperty("xaeros_minimap_version") as String)
-val xaeroWorldMap  = (project.findProperty("xaeros_worldmap_version") as String)
-val xaeroPlus      = (project.findProperty("xaeroplus_version") as String)
+val mcVersion               = prop("minecraft_version", "1.21.4")
+val yarnMappings            = prop("yarn_mappings", "1.21.4+build.1")
+val loaderVersion           = prop("loader_version", "0.16.7")
+val modVersion              = prop("mod_version", "0.1.0")
+val mavenGroup              = prop("maven_group", "com.randomhax")
+val archivesBase            = prop("archives_base_name", "randomhax")
+val archivesPretty          = prop("archives_base_name_readable", archivesBase.replace('-', ' '))
+
+val meteorMcVersion         = prop("meteor_mc_version", "1.21.4")
+val meteorVersionSuffix     = prop("meteor_version_suffix", "SNAPSHOT")
+
+val xaerosMinimapVersion    = prop("xaeros_minimap_version", "25.2.10_Fabric_1.21.4")
+val xaerosWorldMapVersion   = prop("xaeros_worldmap_version", "1.39.12_Fabric_1.21.4")
+val xaeroplusVersion        = prop("xaeroplus_version", "2.29.0+fabric-1.21.4")
 
 base {
     archivesName.set(archivesBase)
@@ -22,10 +28,14 @@ base {
 }
 
 repositories {
+    maven { url = uri("https://maven.fabricmc.net/") }
     mavenCentral()
     maven("https://maven.meteordev.org/releases")
     maven("https://maven.meteordev.org/snapshots")
-    maven("https://api.modrinth.com/maven") { name = "Modrinth" }
+    maven("https://api.modrinth.com/maven") {
+        name = "Modrinth"
+        content { includeGroup("maven.modrinth") }
+    }
 }
 
 dependencies {
@@ -33,36 +43,34 @@ dependencies {
     mappings("net.fabricmc:yarn:$yarnMappings:v2")
     modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
 
-    modImplementation("meteordevelopment:meteor-client:$meteorMc-SNAPSHOT")
-    modCompileOnly("meteordevelopment:baritone:$meteorMc-SNAPSHOT")
+    modImplementation("meteordevelopment:meteor-client:$meteorMcVersion-$meteorVersionSuffix")
 
-    modImplementation("com.github.ben-manes.caffeine:caffeine:3.1.8")
-    modImplementation("net.lenni0451:LambdaEvents:2.4.2")
+    modImplementation("maven.modrinth:xaeros-minimap:$xaerosMinimapVersion")
+    modImplementation("maven.modrinth:xaeros-world-map:$xaerosWorldMapVersion")
+    modImplementation("maven.modrinth:xaeroplus:$xaeroplusVersion")
 
-    // Xaeros 67
-    modImplementation("maven.modrinth:xaeroplus:$xaeroPlus")
-    modImplementation("maven.modrinth:xaeros-minimap:$xaeroMinimap")
-    modImplementation("maven.modrinth:xaeros-world-map:$xaeroWorldMap")
+    modCompileOnly("meteordevelopment:baritone:$meteorMcVersion-$meteorVersionSuffix")
+
+    modImplementation(include("com.github.ben-manes.caffeine:caffeine:3.1.8")!!)
+    modImplementation(include("net.lenni0451:LambdaEvents:2.4.2")!!)
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.119.4+1.21.4")
 }
 
 tasks {
     processResources {
-        val props = mapOf(
-            "version" to project.version.toString(),
-            "mc_version" to mcVersion
-        )
+        val props = mapOf("version" to project.version.toString(), "mc_version" to mcVersion)
         inputs.properties(props)
         filteringCharset = "UTF-8"
         filesMatching("fabric.mod.json") { expand(props) }
     }
 
     jar {
-        val nameProv = providers.provider { base.archivesName.get() }
-        from("LICENSE") { rename { "${it}_${nameProv.get()}" } }
+        inputs.property("archivesName", base.archivesName.get())
+        from("LICENSE") { rename { "${it}_${inputs.properties["archivesName"]}" } }
     }
 
     named<AbstractArchiveTask>("remapJar") {
-        archiveFileName.set(providers.provider { "${base.archivesName.get()} ${project.version}.jar" })
+        archiveFileName.set(providers.provider { "$archivesPretty ${project.version}.jar" })
     }
 
     withType<JavaCompile> {

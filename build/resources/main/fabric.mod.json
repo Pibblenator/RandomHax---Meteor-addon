@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "randomhax",
+  "version": "1.0.0-1.21.4",
+  "name": "RandomHax",
+  "description": "A Meteor Client addon with random (but powerful) hacks.",
+  "authors": ["ZyZaBruh"],
+  "contact": {
+    "sources": "https://github.com/Pibblenator/RandomHax---Meteor-addon"
+  },
+  "icon": "assets/randomhax/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "meteor": [
+      "com.randomhax.addon.RandomHax"
+    ]
+  },
+  "mixins": [
+    "randomhax.mixins.json"
+  ],
+  "custom": {
+    "meteor-client:color": "225,25,25"
+  },
+  "depends": {
+    "java": ">=21",
+    "minecraft": "~1.21.4",
+    "meteor-client": "*"
+  }
+}
