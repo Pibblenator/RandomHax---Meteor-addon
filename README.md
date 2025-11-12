@@ -1,4 +1,4 @@
-# RandomHax - Meteor addon 1.21.8
+# RandomHax - TEST BRANCH - UNFINISHED + BUGS (I dont recommend using this version)
 - This is just a random project because im bored and wanna make some shit
 
 
@@ -15,5 +15,6 @@
 - PathMacro - Me
 - AutoPortal - BepHax
 - Timer Auto Adjust - Me (Inspired by Bephax)
+- YesCom - Me (When a player enters visual range it will log the coords and you can see the last coords you saw them at with /.lastpos NAME)
   
 
