@@ -13,5 +13,16 @@
 - TrailFollower - PathSeeker (Modded by me)
 - Pitch40Util - Jefff
 - AFKVanillaFly - Jefff
+- PathMacro - Me
+- AutoPortal - BepHax
+- Timer Auto Adjust - Me (Inspired by Bephax)
+  
+
+# How do i download it?
+- Download the source code
+- Unzip it
+- Open cmd inside the folder
+- ./gradlew build
+- Then a build folder will appear and the jar will be in libs
   
 
